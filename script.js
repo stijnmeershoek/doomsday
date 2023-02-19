@@ -9,9 +9,11 @@ const days = [
 ];
 
 let actualDay;
+let startTime;
 
 const dateSpan = document.getElementById("date");
 const answerSpan = document.getElementById("answer");
+const timeSpan = document.getElementById("time");
 
 const form = document.querySelector("form");
 const nextBtn = document.getElementById("next");
@@ -24,14 +26,12 @@ form.addEventListener("submit", handleSubmit);
 nextBtn.addEventListener("click", start);
 
 function start() {
-  answerSpan.classList.add("hidden");
   dropDown.value = "";
+  answerSpan.classList.add("hidden");
+  timeSpan.classList.add("hidden");
+
   let date = getRandomDate();
   actualDay = days[date.getDay()];
-
-  let doomsday = getDoomsDay(date);
-
-  console.log(doomsday);
 
   dateSpan.innerText = date.toLocaleString("en-GB", {
     year: "numeric",
@@ -40,6 +40,7 @@ function start() {
   });
 
   answerSpan.innerText = actualDay;
+  startTime = new Date();
 }
 
 function handleSubmit(e) {
@@ -47,21 +48,15 @@ function handleSubmit(e) {
   let val = dropDown.value;
   if (val === "") return;
 
+  let endTime = new Date().getTime() - startTime.getTime();
+  timeSpan.innerText = Math.round(endTime / 1000) + "s";
+
   if (val === actualDay) {
     answerSpan.classList.add("correct");
   }
 
   answerSpan.classList.remove("hidden");
-}
-
-function getDoomsDay(date) {
-  let year = date.getFullYear() % 100;
-  let twelves = Math.floor(year / 12);
-  let difference = Math.floor(year - 12 * twelves);
-  let leaps = Math.floor(difference / 4);
-
-  let alg = (3 + twelves + difference + leaps) % 7;
-  return days[alg];
+  timeSpan.classList.remove("hidden");
 }
 
 function getRandomDate() {

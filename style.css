@@ -1,4 +1,4 @@
-* {
+:root {
   font: sans-serif;
   font-weight: bold;
   overflow: hidden;
@@ -17,13 +17,15 @@ body {
   align-items: center;
 }
 
-span {
+span#date {
   font-size: 3rem;
-  cursor: pointer;
+}
+
+span {
+  font-size: 2rem;
 }
 
 span#answer {
-  font-size: 2rem;
   color: red;
 }
 
@@ -31,7 +33,7 @@ span#answer.correct {
   color: green;
 }
 
-span.hidden {
+.hidden {
   opacity: 0;
 }
 
@@ -40,12 +42,21 @@ form {
   gap: 1rem;
 }
 
+select {
+  border-radius: 5px;
+}
+
 button {
-  background-color: black;
+  background-color: rgb(59, 59, 59);
+  border-radius: 5px;
+  border: 1px solid rgb(133, 133, 133);
   color: rgb(220, 220, 220);
   padding: 5px 10px;
-  border-radius: 10px;
   outline: none;
-  border: none;
   cursor: pointer;
+}
+
+button:hover {
+  border-color: white;
+  color: white;
 }
