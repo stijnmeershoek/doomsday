@@ -1,13 +1,15 @@
 :root {
-  font: sans-serif;
+  font-family: sans-serif;
   font-weight: bold;
   overflow: hidden;
-  font-family: sans-serif;
   color-scheme: dark;
 }
 
 body {
   height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
   background-color: #1a1a1a;
   color: white;
   display: flex;
@@ -15,14 +17,11 @@ body {
   gap: 2rem;
   justify-content: center;
   align-items: center;
+  font-size: 4rem;
 }
 
 span#date {
-  font-size: 3rem;
-}
-
-span {
-  font-size: 2rem;
+  font-size: 6rem;
 }
 
 span#answer {
@@ -42,15 +41,17 @@ form {
   gap: 1rem;
 }
 
-select {
-  border-radius: 5px;
-}
-
+select,
 button {
+  border-radius: 5px;
+  font-size: 1.25rem;
   background-color: rgb(59, 59, 59);
   border-radius: 5px;
   border: 1px solid rgb(133, 133, 133);
   color: rgb(220, 220, 220);
+}
+
+button {
   padding: 5px 10px;
   outline: none;
   cursor: pointer;

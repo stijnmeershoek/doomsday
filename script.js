@@ -1,12 +1,4 @@
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 let actualDay;
 let startTime;
@@ -28,6 +20,7 @@ nextBtn.addEventListener("click", start);
 function start() {
   dropDown.value = "";
   answerSpan.classList.add("hidden");
+  answerSpan.classList.remove("correct");
   timeSpan.classList.add("hidden");
 
   let date = getRandomDate();
@@ -36,7 +29,7 @@ function start() {
   dateSpan.innerText = date.toLocaleString("en-GB", {
     year: "numeric",
     month: "long",
-    day: "numeric"
+    day: "numeric",
   });
 
   answerSpan.innerText = actualDay;
@@ -49,7 +42,7 @@ function handleSubmit(e) {
   if (val === "") return;
 
   let endTime = new Date().getTime() - startTime.getTime();
-  timeSpan.innerText = Math.round(endTime / 1000) + "s";
+  timeSpan.innerText = (endTime / 1000).toFixed(1) + "s";
 
   if (val === actualDay) {
     answerSpan.classList.add("correct");
@@ -57,6 +50,7 @@ function handleSubmit(e) {
 
   answerSpan.classList.remove("hidden");
   timeSpan.classList.remove("hidden");
+  startTime = undefined;
 }
 
 function getRandomDate() {
