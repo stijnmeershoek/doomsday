@@ -1,3 +1,4 @@
+import "./doomsday.js";
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 let actualDay;
